@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Password Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+
+    #password-generator {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="checkbox"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #output {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="password-generator">
+    <h1>Password Generator</h1>
+    <label for="passwordLength">Password Length:</label>
+    <input type="text" id="passwordLength" value="12">
+    <label><input type="checkbox" id="useUppercase"> Include Uppercase Letters (A-Z)</label>
+    <label><input type="checkbox" id="useNumbers"> Include Numbers (0-9)</label>
+    <label><input type="checkbox" id="useSymbols"> Include Symbols (!@#$%^&*()_-+=<>?/)</label>
+    <button onclick="generatePassword()">Generate Password</button>
+    <p id="output"></p>
+  </div>
+
+  <script>
+    function generatePassword() {
+      const length = parseInt(document.getElementById("passwordLength").value);
+      const useUppercase = document.getElementById("useUppercase").checked;
+      const useNumbers = document.getElementById("useNumbers").checked;
+      const useSymbols = document.getElementById("useSymbols").checked;
+
+      const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+      const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const numberChars = "0123456789";
+      const symbolChars = "!@#$%^&*()_-+=<>?/";
+
+      let validChars = lowercaseChars;
+      let password = "";
+
+      if (useUppercase) validChars += uppercaseChars;
+      if (useNumbers) validChars += numberChars;
+      if (useSymbols) validChars += symbolChars;
+
+      for (let i = 0; i < length; i++) {
+        password += validChars.charAt(Math.floor(Math.random() * validChars.length));
+      }
+
+      document.getElementById("output").textContent = "Generated Password: " + password;
+    }
+  </script>
+</body>
+
+</html>
+
+
+<body>
+
+  <script src="script.js"></script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+</body>
+
+</html>
